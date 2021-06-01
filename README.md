@@ -9,7 +9,7 @@ menus and sub-menus.
 
 ### How To Run
 
-This program is a simple java program. As such you are able to run it by opening the JavaApplication.java file in an IDE or terminal and run using the appropriate commands.
+This program is a simple java program. As such you are able to run it by opening the JetsApplication.java file in an IDE or terminal and run using the appropriate commands.
 
 ### Technologies Used
 
