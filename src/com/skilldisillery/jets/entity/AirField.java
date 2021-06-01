@@ -13,7 +13,13 @@ public class AirField {
 	}
 
 	public List<Jet> getJets() {
-		return jets;
+		List<Jet> jets2 = new ArrayList<>();
+		
+		for (Jet jet : jets) {
+			jets2.add(jet);
+		}
+		
+		return jets2;
 	}
 	public void addJet(Jet jet) {
 		this.jets.add(jet);
@@ -79,5 +85,25 @@ public class AirField {
 				AirField.longestRangeJet = jet;
 			}
 		}
+	}
+	
+	public void loadCargoPlanes() {
+		for (Jet jet : jets) {
+			if(jet instanceof CargoCarrier) {
+				 ((CargoCarrier) jet).executeLoadProcedures();
+			}
+		}
+	}
+	
+	public void removeJetFromFleet(int toRemove) {
+		jets.remove(toRemove);
+	}
+
+	public void deployFighterJets() {
+		for (Jet jet : jets) {
+			if(jet instanceof CombatJet) {
+				((CombatJet) jet).executeDogFight();
+			}
+		}		
 	}
 }

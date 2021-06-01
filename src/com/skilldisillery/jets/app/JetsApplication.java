@@ -4,7 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 import com.skilldisillery.jets.entity.AirField;
 import com.skilldisillery.jets.entity.CargoPlane;
@@ -114,21 +118,42 @@ public class JetsApplication {
 				airField.printLongestRangeJet();
 				break;
 			case 5:
-				System.out.println("IMPLEMENT ME!! DELETE ME!!");
+				airField.loadCargoPlanes();
+				break;
 			case 6:				
-				System.out.println("IMPLEMENT ME!! DELETE ME!!");
+				airField.deployFighterJets();
 				break;
 			case 7:
 				createJetSubMenu();
 				break;
 			case 8:
-				System.out.println("Feature in development! DELETE ME");
+				jetRemovalSubMenu();
 				break;
 			case 9:
 				fareWell();
 				System.exit(0);
 		}
 		return menuChoice;
+	}
+
+	private void jetRemovalSubMenu() {
+		System.out.println("\n------------------------------------------------------------------");
+		System.out.println("                      -Jet Remova; Sub-Menu-");
+		System.out.println("\nWhich jet would you like to remove?: ");
+		System.out.println();
+		
+		List<Jet> jets = airField.getJets();
+		
+		int itr = 1;
+		for (Jet jet : jets) {
+			System.out.println(itr + ") " + jet.toString());
+			itr++;
+		}
+		
+		System.out.print("\nPlease enter your selection as a number: ");
+		itr = intInputValidator(0);
+		airField.removeJetFromFleet((itr - 1));
+		System.out.println("\nJet " + itr + " removed. Action Complete.");
 	}
 
 	private void createJetSubMenu() {
@@ -143,16 +168,18 @@ public class JetsApplication {
 		kb.nextLine();
 		jetInfo[1] = kb.nextLine().trim();
 
-		System.out.print("What is the maximum speed of the jet?: ");
+		System.out.print("What is the maximum speed of the jet?(as an integer): ");
 		jetInfo[2] = kb.nextLine().trim();
 
-		System.out.print("What is the maximum range of the jet?: ");
+		System.out.print("What is the maximum range of the jet?(as an integer): ");
 		jetInfo[3] = kb.nextLine().trim();
 		
-		System.out.print("What is the price of the jet?: ");
+		System.out.print("What is the price of the jet?(as an integer): ");
 		jetInfo[4] = kb.nextLine().trim();
 		
 		airField.addJet(createJet(jetInfo));
+		
+		System.out.println("\nJet successfully added to fleet. Action Complete.");
 	}
 
 	private String chooseJetTypes() {

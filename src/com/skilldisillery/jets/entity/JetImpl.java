@@ -2,6 +2,13 @@ package com.skilldisillery.jets.entity;
 
 public class JetImpl extends Jet {
 
+	private static int jetImplIdNumGenerator = 10001;
+	private int jetImplIdNum; 
+	{
+		jetImplIdNum = jetImplIdNumGenerator;
+		JetImpl.jetImplIdNumGenerator++;
+	}
+	
 	public JetImpl() { super("Unkown", 0, 0, 0.0); }
 	public JetImpl(String model, int speed, int range, double price) {
 		super(model, speed, range, price);
