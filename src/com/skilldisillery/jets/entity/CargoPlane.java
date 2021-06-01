@@ -49,6 +49,13 @@ public class CargoPlane extends Jet implements CargoCarrier{
 	public void fly() {
 		System.out.println("BUURRRMM the cargo jet bumbles through the air!");
 		
+		double flightTimeRemaining = super.getRange() / (double)super.getSpeed();
+		System.out.println("Range: " + super.getRange() + " and " +
+		                   "Current Speed: " + super.getSpeed());
+		
+		System.out.println(flightTimeRemaining + " hours of flight time remaining.");
+		System.out.println();
+		
 	}
 
 	@Override

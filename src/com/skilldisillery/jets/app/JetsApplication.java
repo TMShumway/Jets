@@ -220,7 +220,7 @@ public class JetsApplication {
 				if(whichMenu == 1) {
 					System.out.print("\nPlease only enter a number between 1 - 9: ");					
 				} else {
-					System.out.print("\\nPlease only enter a number between 1 - 3: ");
+					System.out.print("\\nPlease only enter a number: ");
 				}
 				kb.next();
 			}
